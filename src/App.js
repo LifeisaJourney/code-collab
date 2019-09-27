@@ -49,7 +49,10 @@ const App = () => {
     };
 
     const handleMessageReceived = (message) => {
-        setLine(message.lineNumber, message.value);
+        const lineNumber = Object.keys(message)[0];
+        if (key) {
+            setLine(lineNumber, message[lineNumber]);
+        }
     };
 
   return (
