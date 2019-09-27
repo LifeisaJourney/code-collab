@@ -16,9 +16,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="numerical-lines">
         <h2><Listing/></h2>
-      </header>
+      </div>
     </div>
   );
 }
