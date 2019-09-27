@@ -12,10 +12,21 @@ const App = () => {
     useEffect(() => {
         const clientId = uuidv1();
         socket.emit('join', clientId);
+        socket.on('message', handleMessageReceived);
    });
+
+    const handleMessageReceived = (message) => {
+        console.log(message);
+    };
+
+    const handleClick = () => {
+        socket.emit('message', 'Test!');
+    };
 
   return (
     <div className="App">
+      <button onClick={handleClick}>Click</button>
+
       <div className="numerical-lines">
         <h2><Listing/></h2>
       </div>
