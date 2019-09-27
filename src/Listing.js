@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 export default class Listing extends Component {
   updateInput = (lineNumber) => {
-    return (inputValue) => {
-      this.props.updateLine(lineNumber, inputValue)
+    return (e) => {
+      this.props.updateLine(lineNumber, e.target.value)
     }
   };
   render() {
