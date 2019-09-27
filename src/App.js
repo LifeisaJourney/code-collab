@@ -31,7 +31,7 @@ const App = () => {
 
     const setLine = (lineNumber, value) => {
         dispatch({
-            type: 'UPLOAD_LINE',
+            type: 'UPDATE_LINE',
             payload: {
                 [lineNumber]: value
             }
