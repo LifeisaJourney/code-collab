@@ -1,9 +1,19 @@
-import React from 'react';
+import io from 'socket.io-client';
+import uuidv1 from 'uuid/v1';
+
+import React, { useEffect } from 'react';
 import './App.css';
 import Listing from './Listing';
 
+const HEROKU_URL = 'https://afternoon-dawn-48814.herokuapp.com/'
+const socket = io(HEROKU_URL);
 
-function App() {
+const App = () => {
+    useEffect(() => {
+        const clientId = uuidv1();
+        socket.emit('join', clientId);
+   });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -14,3 +24,4 @@ function App() {
 }
 
 export default App;
+
