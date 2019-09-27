@@ -1,25 +1,50 @@
 import io from 'socket.io-client';
-import uuidv1 from 'uuid/v1';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import './App.css';
 import Listing from './Listing';
 
 const HEROKU_URL = 'https://afternoon-dawn-48814.herokuapp.com/'
 const socket = io(HEROKU_URL);
 
+const getInitialState = () => ({});
+
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'UPDATE_LINE':
+            return { ...state, ...action.payload };
+        default:
+            return state;
+    }
+};
+
 const App = () => {
     useEffect(() => {
-        const clientId = uuidv1();
-        socket.emit('join', clientId);
         socket.on('message', handleMessageReceived);
         return () => {
             socket.off('message');
         };
     });
 
+    const [state, dispatch] = useReducer(reducer, getInitialState());
+
+    const setLine = (lineNumber, value) => {
+        dispatch({
+            type: 'UPLOAD_LINE',
+            payload: {
+                [lineNumber]: value
+            }
+        });
+    };
+
+    const updateLine = (lineNumber, value) => {
+        const message = { [lineNumber]: value };
+        setLine(lineNumber, value);
+        socket.emit('message', message);
+    };
+
     const handleMessageReceived = (message) => {
-        console.log(message);
+        setLine(message.lineNumber, message.value);
     };
 
   return (
