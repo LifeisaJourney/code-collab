@@ -30,6 +30,9 @@ const App = () => {
       <div className="numerical-lines">
         <h2><Listing/></h2>
       </div>
+      <div className="code-area">
+        <h2>test</h2>
+      </div>
     </div>
   );
 }
