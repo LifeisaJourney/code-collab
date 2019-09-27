@@ -8,11 +8,14 @@ import Listing from './Listing';
 const HEROKU_URL = 'https://afternoon-dawn-48814.herokuapp.com/'
 const socket = io(HEROKU_URL);
 
+const ActionType = {
+    UPDATE_LINE: 'UPDATE_LINE'
+};
 const getInitialState = () => ({});
 
 const reducer = (state, action) => {
     switch(action.type) {
-        case 'UPDATE_LINE':
+        case ActionType.UPDATE_LINE:
             return { ...state, ...action.payload };
         default:
             return state;
@@ -31,7 +34,7 @@ const App = () => {
 
     const setLine = (lineNumber, value) => {
         dispatch({
-            type: 'UPDATE_LINE',
+            type: ActionType.UPDATE_LINE,
             payload: {
                 [lineNumber]: value
             }
