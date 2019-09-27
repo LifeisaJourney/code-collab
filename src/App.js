@@ -1,4 +1,5 @@
 import io from 'socket.io-client';
+import debounce from 'lodash/debounce';
 
 import React, { useEffect, useReducer } from 'react';
 import './App.css';
@@ -37,10 +38,14 @@ const App = () => {
         });
     };
 
+    const debouncedMessageEmitter = debounce((message) => {
+        socket.emit('message', message);
+    });
+
     const updateLine = (lineNumber, value) => {
         const message = { [lineNumber]: value };
         setLine(lineNumber, value);
-        socket.emit('message', message);
+        debouncedMessageEmitter(message);
     };
 
     const handleMessageReceived = (message) => {
