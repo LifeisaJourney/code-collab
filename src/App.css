@@ -21,16 +21,18 @@
 
 .numerical-lines{
   list-style-type:none;
-  margin:0 10px;
-  padding:0; 
-  display: inline;
+  margin:0 auto;
+  padding:1px; 
+  display: block;
+  width:100%;
+
 }
 
 .code-area{
   margin: 0;
   display:block;
   width: 100%;
-  padding: 10px;
+  padding: 1px;
 }
 
 .font-changes{
@@ -41,4 +43,8 @@
 
 h2{
   margin:0px;
+}
+
+.input-field{
+  width: 90%;
 }
