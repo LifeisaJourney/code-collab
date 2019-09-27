@@ -49,10 +49,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="numerical-lines">
+      <div className="numerical-lines font-changes">
         <h2><Listing/></h2>
       </div>
-      <div className="code-area">
+      <div className="code-area font-changes">
         <h2>test</h2>
       </div>
     </div>

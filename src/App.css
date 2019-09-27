@@ -30,4 +30,15 @@
   margin: 0;
   display:block;
   width: 100%;
+  padding: 10px;
+}
+
+.font-changes{
+  font-size: 14px;
+  padding: 12px;
+  font-family: "Arial", Sans-serif;
+}
+
+h2{
+  margin:0px;
 }
