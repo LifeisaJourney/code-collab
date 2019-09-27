@@ -50,7 +50,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="numerical-lines font-changes">
-        <h2><Listing/></h2>
+        <h2><Listing lineState={state} updateLine={updateLine} /></h2>
       </div>
       <div className="code-area font-changes">
         <h2>test</h2>
